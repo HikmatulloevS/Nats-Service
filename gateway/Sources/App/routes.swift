@@ -14,6 +14,7 @@ func routes(_ app: Application) throws {
         buffer.writeBytes(payloadData)
         
         let answer = try await nats.req("users.register", payload: buffer, timeout: 5000) // Timeout in milliseconds
+        print(answer.description)
         
         return RegisterRequest(
             email: user.email,
