@@ -27,6 +27,8 @@ public func configure(_ app: Application) async throws {
     // register routes
 
     await natsRoutes(app.nats)
+    app.migrations.add(UserMigration())
+    try await app.autoMigrate()
 }
 
 
